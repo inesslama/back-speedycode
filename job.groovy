@@ -20,8 +20,6 @@ job('dockerbuild_push') {
             registryCredentials('github_credentials')
             
             
-            additionalTags('latest') 
-            
         }
     }
 }
