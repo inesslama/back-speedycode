@@ -16,7 +16,7 @@ job('dockerbuild_push') {
     steps {
         dockerBuildAndPublish {
             repositoryName('docker1299999/login')
-            tag('0.0.1')
+            tag('0.0.1':'0.0.1')
             registryCredentials('github_credentials')
             
         
