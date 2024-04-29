@@ -18,11 +18,10 @@ job('dockerbuild_push') {
             repositoryName('docker1299999/login')
             tag('0.0.1')
             registryCredentials('github_credentials')
-            forcePull(false)
-            createFingerprints(false)
-            skipDecorate()
             
-        
+            
+            additionalTags('latest') 
+            
         }
     }
 }
