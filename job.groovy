@@ -3,7 +3,7 @@ job('dockerbuild_push'){
     scm {
         git {
             
-            url('https://github.com/inesslama/back.git','https')
+            url('https://github.com/inesslama/back.git')
             
 
             branch('master')
