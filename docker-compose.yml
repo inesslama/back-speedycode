@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  my_postgres:
+    image: postgres
+    container_name: my_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ines
+      POSTGRES_USER: postgres
+      POSTGRES_DB: angular_db
+   
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pg_container
+    restart: always
+    ports:
+      - "8888:8088"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=ines@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=ines
+     
+    depends_on:
+      - my_postgres
+  fastapi:
+    build:
+      context: .
+    container_name : fast-container
+    restart: always
+    ports:
+      - "8088:8088"
+    depends_on:
+      - my_postgres

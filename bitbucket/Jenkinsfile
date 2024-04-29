@@ -1,0 +1,41 @@
+pipeline {
+
+  environment {
+    dockerimagename = "docker1299999/crud_app:1.0"
+    dockerImage = "docker1299999/crud_app:1.0"
+  }
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git branch: 'master', credentialsId: 'bitbucket', url: 'https://ines__slama@bitbucket.org/123-098/speedycode.git'
+      }
+    }
+
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerImage
+        }
+      }
+    }
+
+    stage('Pushing Image') {
+      environment {
+               registryCredential = 'dockerhublogin'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+            dockerImage.push("1.0")
+          }
+        }
+      }
+    }
+
+  }
+
+}
