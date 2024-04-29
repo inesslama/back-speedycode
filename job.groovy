@@ -5,11 +5,12 @@ job('dockerbuild_push'){
             remote {
                 github('https://github.com/inesslama/back.git','https')
             }
+             branch('master')
+
+            credentialsId('github_credentials')
         }
 
-        branch('master')
-
-        credentialsId('github_credentials')
+       
 
         
 
