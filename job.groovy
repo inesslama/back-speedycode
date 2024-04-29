@@ -14,10 +14,13 @@ job('dockerbuild_push') {
     }
 
     steps {
-        // Build Docker image
-        docker.build('docker1299999/login:0.0.1').with {
-            // Push Docker image
-            push()
+        dockerBuildAndPublish {
+            repositoryName('docker1299999/login')
+            tag('0.0.1')
+            registryCredentials('github_credentials')
+            forcePull(false)
+            createFingerprints(false)
+            skipDecorate()
         }
     }
 }
