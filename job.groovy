@@ -7,7 +7,7 @@ job('dockerbuild_push'){
             }
              branch('master')
 
-            credentialsId('github_credentials')
+            credentials('github_credentials')
         }
 
        
