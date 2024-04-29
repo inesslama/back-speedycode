@@ -30,7 +30,9 @@ job('dockerbuild_push'){
     
      steps {
 
-       script{
+        
+
+       
         
         docker.build('docker1299999/login:0.0.1')
 
@@ -41,7 +43,7 @@ job('dockerbuild_push'){
 
         } 
       
-       }
+       
         
     }
 
