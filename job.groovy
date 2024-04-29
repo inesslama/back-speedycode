@@ -3,7 +3,7 @@ job('dockerbuild_push'){
     scm {
         git {
             remote {
-                github('https://github.com/elyadata/SpeedyCode-backend.git','https')
+                github('https://github.com/inesslama/back.git','https')
             }
         }
 
