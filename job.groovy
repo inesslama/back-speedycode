@@ -29,15 +29,20 @@ job('dockerbuild_push'){
 
     
      steps {
+
+       script{
         
-        dockerBuildAndPublish {
-            repositoryName('docker1299999/login')
-            tag('0.0.1')
-            registryCredentials('dockerhublogin')
-            forcePull(false)
-            createFingerprints(false)
-            skipDecorate()
-        }
+        docker.build('docker1299999/login:0.0.1')
+
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhublogin') {
+
+           docker.image('docker1299999/login:0.0.1').push()
+
+
+        } 
+      
+       }
+        
     }
 
 
